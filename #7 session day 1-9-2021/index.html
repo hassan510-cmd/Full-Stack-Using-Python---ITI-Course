@@ -1,0 +1,159 @@
+اهلا هوبا
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-9-2021</title>
+</head>
+
+<script>
+    var numbers = [0]
+    var operators = ["+", "-", "x", "/", "%"]
+    var result = 0
+    var exp = ""
+    var index = 0
+
+    function calc(i) {
+        document.getElementById("statment").innerHTML += " " + "<small>" + i + "</small>"
+        if (!operators.includes(i)) {
+            numbers[index] += (i)
+            console.log(numbers)
+        }
+        else {
+            exp = i
+            index += 1
+        }
+    }
+
+
+    function clearrr() {
+        document.getElementById("statment").innerHTML = " "
+        result = 0
+    }
+
+
+    function show() {
+        switch (exp) {
+            case ("+"):
+                if (numbers.length < 2) { result = result + numbers[0] }
+                else { result = result + numbers[0] + numbers[1] }
+                numbers = []
+                break
+            case ("-"):
+                if (numbers.length < 2) { result = result - numbers[0] }
+                else { result = result - numbers[0] - numbers[1] }
+                numbers = []
+                console.log(result)
+                break
+            case ("x"):
+                // result = 1
+                if (numbers.length < 2) { result = result * numbers[0] }
+                else { result = result * numbers[0] * numbers[1] }
+                numbers = []
+                break
+
+            case ("/"):
+                // result = 1
+                if (numbers.length < 2) { result = result / numbers[0] }
+                else { result = result / numbers[0] / numbers[1] }
+                numbers = []
+                break
+
+                break
+            case ("%"):
+                // result = 1
+                if (numbers.length < 2) {
+
+                    result = result % numbers[0]
+                }
+                else {
+                    result = result % numbers[0] % numbers[1]
+                }
+                numbers = []
+                break
+        }
+        document.getElementById("statment").innerHTML += " = " + "<small>" + (result) + "</small>"
+        document.getElementById("statment").innerHTML += " <hr>"
+    }
+    function nn() {
+        console.log(this)
+    }
+
+    function switch_sign(i) {
+        if (i == "-") {
+            if (numbers.length < 2) {
+                numbers[0] = numbers[0] * -1
+                document.getElementById("statment").innerHTML += "(-) "
+            }
+            else {
+                numbers[0] = numbers[0] * -1
+                numbers[1] = numbers[1] * -1
+            }
+
+        }
+    }
+</script>
+
+
+<body>
+    <style>
+        button {
+            color: green;
+            padding: 5px;
+            margin: 3px;
+            width: 50px;
+        }
+
+        #zero {
+            width: 110px;
+        }
+    </style>
+    <!-- <button onclick=calc(1)>clic me</button> -->
+    <div id=statment>
+
+    </div>
+    <div>
+        <button onclick=clearrr()>C</button>
+        <button onclick=calc("%")>%</button>
+        <button onclick=calc("/")>/</button>
+        <button onclick=switch_sign("-")>+/-</button>
+
+    </div>
+    <div>
+        <button onclick=calc(1)>1</button>
+        <button onclick=calc(2)>2</button>
+        <button onclick=calc(3)>3</button>
+        <button onclick=calc("+")>+</button>
+
+    </div>
+    <div>
+        <button onclick=calc(4)>4</button>
+        <button onclick=calc(5)>5</button>
+        <button onclick=calc(6)>6</button>
+        <button onclick=calc('-')>-</button>
+    </div>
+    <div>
+        <button onclick=calc(7)>7</button>
+        <button onclick=calc(8)>8</button>
+        <button onclick=calc(9)>9</button>
+        <button onclick=calc('x')>x</button>
+    </div>
+    <div>
+
+        <button id=zero onclick=calc(0)>0</button>
+        <button onclick=calc('.')>.</button>
+        <button onclick=show()>=</button>
+    </div>
+    <div>
+    </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // lab 1 
+        var how_many_numbers = Number(prompt("how many number ?"))
+        var numbers = []
+        var total = 0
+        for (var i = 0; i < how_many_numbers; i++) {
+            numbers.push(Number(prompt("enter number" + (i + 1))))
+        }
+        for (var k = 0; k < numbers.length; k++) {
+            total += numbers[k]
+        }
+        confirm("sum = " + total + "\navrage = " + total / numbers.length)
+        // --------------------------------------------------------------------
+        // lab2
+        var contacts = []
+        var again = 1
+        while (again) {
+            var operation = prompt("add or search ?")
+            if (operation == "add") {
+                var name = prompt("enter name")
+                var phone = prompt("enter phone")
+                var contact = { contact_name: name, contact_phone: phone }
+                contacts.push(contact)
+
+            }
+            else if (operation == "search") {
+                var search_by = prompt("enter name or phone")
+                for (var i = 0; i < contacts.length; i++) {
+                    if (contacts[i].contact_name == search_by) {
+                        confirm(search_by + "'s phone is " + contacts[i].contact_phone)
+                        break
+                    }
+                    else if (contacts[i].contact_phone == search_by) {
+                        confirm(search_by + " belongs to " + contacts[i].contact_name)
+                        break
+                    }
+                    else {
+                        // confirm(search_by + " not exsit")
+                        continue
+                    }
+                }
+            }
+
+            again = Number(prompt("[0] for end program \n[1] for another process"))
+        }
+        // ----------------------------------------------------------------------------
+        // Bouns 
+        var shapes = {
+            circle: function cirle() {
+                var reduis = Number(prompt("enter cicle reduis"))
+                var area = 3.14 * reduis * reduis
+                confirm("circle area = " + area)
+            },
+
+            square: function Square() {
+                var side = Number(prompt("enter square side"))
+                var area = side * side
+                confirm("square area = " + area)
+            },
+            rectangle: function Rectangle() {
+                var l = Number(prompt("enter rectangle length"))
+                var w = Number(prompt("enter rectangle width"))
+                var area = l * w
+                confirm("rectangle area = " + area)
+            },
+            run: function (choice) {
+                switch (choice) {
+                    case "circle":
+                        shapes.circle()
+                        break
+                    case "square":
+                        shapes.square()
+                        break
+                    case "rectangle":
+                        shapes.rectangle()
+                        break
+                }
+            }
+        }
+
+        var again = 1
+        while (again) {
+            var choice = prompt("calculate( circle or square or rectangle) area ?")
+            shapes.run(choice)
+            again = Number(prompt("[1] for another operation\n[0] for end program"))
+
+        }
+    </script>
+</body>
+
+</html>
+
+<!--  -->
