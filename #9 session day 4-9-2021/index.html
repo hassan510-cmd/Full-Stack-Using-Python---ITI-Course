@@ -1,0 +1,61 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- sadsadsa -->
+    <!-- <img src="1.png" alt=""> -->
+    <div id="slider" style="background-color: antiquewhite; text-align: center;">
+        <img id="previous_pic" src="2.png" alt="" width="15%" height="20%">
+        <img id="current_pic" src="1.png">
+        <img id="next_pic" src="3.png" alt="" width="15%" height="20%">
+        <button id="next_img" onclick=get_next() style="float: left;">
+            < </button>
+                <button style="float: right;" onclick=get_previous()>> </button>
+
+    </div>
+
+    <script>
+        // document.getElementById("slider").style.backgroundImage = "url('1.png')";
+        // document.getElementById("slider").setAttribute("style", "background-image: url('1.png')")
+        var current_src = ""
+        var pic = ["1.png", "2.png", "3.png", "4.png"]
+        // var
+        function get_next() {
+            current_src = document.getElementById("current_pic").getAttribute("src");
+            var next_src = pic[(pic.indexOf(current_src) + 1) % pic.length];
+            document.getElementById("current_pic").setAttribute("src", next_src)
+            document.getElementById("next_pic").setAttribute("src", pic[(pic.indexOf(next_src) + 1) % pic.length])
+            if ((pic.indexOf(next_src) == 0)) {
+                document.getElementById("previous_pic").setAttribute("src", pic[pic.length - 1])
+            }
+            else {
+
+                document.getElementById("previous_pic").setAttribute("src", pic[(pic.indexOf(next_src) - 1) % pic.length])
+            }
+        }
+        function get_previous() {
+            // console.log("back");
+            current_src = document.getElementById("current_pic").getAttribute("src");
+            var next_src = pic[(pic.indexOf(current_src) + 1) % pic.length];
+            document.getElementById("current_pic").setAttribute("src", next_src)
+            document.getElementById("previous_pic").setAttribute("src", pic[(pic.indexOf(next_src) + 1) % pic.length])
+            if ((pic.indexOf(next_src) == 0)) {
+                document.getElementById("next_pic").setAttribute("src", pic[pic.length - 1])
+            }
+            else {
+
+                document.getElementById("next_pic").setAttribute("src", pic[(pic.indexOf(next_src) - 1) % pic.length])
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

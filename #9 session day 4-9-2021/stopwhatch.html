@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="background-color: rgb(162, 237, 250);">
+        <span>
+            <h1 id="clock" style="text-align: center;">
+
+            </h1>
+        </span>
+    </div>
+    <div style="background-color: bisque; text-align: center;">
+        Hours: <input id="h" type="number" style="width: 30px;">
+        Minutes: <input id="m" type="number" style="width: 30px;">
+        Seconds: <input id="s" type="number" style="width: 30px;">
+
+        <div style="margin: 30px;">
+            <button onclick=start_time()>set</button>
+            <button onclick=stp()>clear</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        var hours = 0
+        var minut = 0
+        var seco = 0
+        var my_full = hours + " : " + minut + " : " + seco
+        var run = ""
+        function start_time() {
+            run = setInterval(
+                function () {
+                    var date2 = new Date();
+                    my_full = (document.getElementById("h").value) + " : " +
+                        (document.getElementById("m").value) + " : " +
+                        (document.getElementById("s").value)
+                    console.log(my_full);
+                    var full = (date2.getHours() % 12 || 12) + " : " +
+                        (date2.getMinutes() % 60 || 00) + " : " +
+                        (date2.getSeconds() % 60 || 0)
+
+                    if (full == my_full) {
+                        confirm("wake up !!")
+                        clearInterval(run)
+                    }
+                    else {
+                        console.log(full == my_full);
+                    }
+                }
+                , 1000)
+        }
+
+        setInterval(
+            function () {
+                var date = new Date();
+                var full = (date.getHours() % 12 || 12) + " : " +
+                    (date.getMinutes() % 60 || 00) + " : " +
+                    (date.getSeconds() % 60 || 0)
+                document.getElementById("clock").innerText = full
+
+            }
+            , 1000)
+
+        function stp() {
+            document.getElementById("h").value = ""
+            document.getElementById("m").value = ""
+            document.getElementById("s").value = ""
+            clearInterval(run)
+        }
+    </script>
+</body>
+
+</html>
