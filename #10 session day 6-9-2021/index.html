@@ -1,0 +1,80 @@
+<html>
+
+<head>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick=get_data()> fetch data</button>
+    <script>
+        function get_data() {
+
+            var url = "https://reqres.in/api/users?page=2"
+
+            fetch(url).then(function (data) {
+                return data.json();
+
+            }).then(function (resobj) {
+                all_data = resobj.data
+                // document.body.innerHTML += (resobj.token)
+                for (var i = 0; i < all_data.length; i++) {
+
+                    var name = document.createElement("p")
+                    name.textContent = all_data[i]["first_name"]
+                    // var img = createElement("img")
+                    // img.setattribute("src", all_data[i]["avatar"])
+                    var id = document.createElement("h3")
+                    id.textContent = `id : ${all_data[i]["id"]}`
+                    var email = document.createElement("h3")
+                    email.textContent = `email : ${all_data[i]["email"]}`
+                    document.body.appendChild(id)
+                    document.body.appendChild(name)
+                    document.body.appendChild(email)
+                    document.body.insertAdjacentHTML(`beforeend`, `<img src="${all_data[i]["avatar"]}"/>`)
+                }
+                document.body.innerHTML += resobj.data[i]["first_name"]
+            })
+        }
+
+        function send_data(e) {
+
+            e.preventDefault();
+            // console.log("test");
+            var url2 = "https://reqres.in/api/login"
+            var send_data = {
+                email: document.getElementById("username").value,
+                password: document.getElementById("email").value
+            }
+            console.log(send_data);
+            fetch(url2, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(send_data)
+            }
+
+            ).then(function (data) {
+                return data.json();
+
+            }).then(function (resobj) {
+                all_data = resobj.data
+                console.log(resobj);
+                console.log(all_data);
+
+                document.body.innerHTML += (resobj.token)
+            })
+        }
+
+
+    </script>
+    <form method="POST" onsubmit=send_data(event)>
+
+        username : <input id="username" type="text">
+        password : <input id="email" type="password">
+        <button type="submit">send</button>
+    </form>
+</body>
+
+</html>
