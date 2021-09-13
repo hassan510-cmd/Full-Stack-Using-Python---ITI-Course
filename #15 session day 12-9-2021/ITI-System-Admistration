@@ -1,0 +1,29 @@
+echo hdash
+cal
+cal -h
+cal -jy
+man -k cal
+man -k calender
+sudo apt-get --purge remove teams
+whoami
+cal ; whoami
+cal && whoami
+cal2 && whoami
+more chat.py
+less chat.py 
+ls |less
+less -N chat.py 
+less -N -e chat.py 
+ls -l | awk '{print $7}'
+cat chat.py |awk '{print $7}'
+cut -d ":" -f 1,3 /etc/passwd
+cut -d ":" -f 1,3 /etc/passwd --output-delimiter=" "
+cut -d ":" -f 1,3 /etc/passwd --output-delimiter=" " | sort
+ sudo apt-get install tree
+rm -r Egypt/
+mkdir -p Egypt/ITI
+rm -r a b
+touch php-l1-day{1..4}.mp4
+touch admin{1..2}-day{1..4}.mp4
+ mkdir "backup $(date +"%F %T")"
+
