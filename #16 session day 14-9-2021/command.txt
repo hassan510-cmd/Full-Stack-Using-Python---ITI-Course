@@ -1,0 +1,93 @@
+you can take your input from redirection-file-input as a user input which can be used as a test cases 
+use the following command
+we have an file named answer contain "no" word , lets use this word to answer the rm -i question 
+rm -i anfile < answer 
+it will take "no" word as an answer
+to count lines and words and characers in file
+name = value just store value in name "in the current bash only"
+export name=value to create variable and save it in env-variable
+$ export mytoken="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"  
+$ id
+-----------------------------lab-------------------------------------
+$ mkdir -p project/mobapp 
+
+$ sudo useradd -m user1
+$ sudo useradd -m user2
+$ sudo useradd -m user3
+
+$ sudo passwd user1 
+$ sudo passwd user2
+$ sudo passwd user3   
+
+$ sudo ln -s /project/mobapp /home/user1
+$ sudo ln -s /project/mobapp /home/user2
+$ sudo ln -s /project/mobapp /home/user3
+
+********************************************
+////////////////////////////////////////////
+$ sudo ln -s /project2/mobapp2 /home/user1
+$ sudo ln -s /project2/mobapp2 /home/user2
+$ sudo ln -s /project2/mobapp2 /home/user3
+///////////////////////////////////////////
+///////////////////////////////////////////
+sudo ln -s /project3/mobapp3 /home/user1
+sudo ln -s /project3/mobapp3 /home/user2
+sudo ln -s /project3/mobapp3 /home/user3
+////////////////////////////////////////////
+********************************************
+
+$ sudo groupadd mobdev
+
+$ sudo chgrp mobdev project/mobapp/
+
+$ chmod g+rwx project/mobapp/
+
+$ sudo usermod -G mobdev user1  
+$ sudo usermod -G mobdev user2
+$ sudo usermod -G mobdev user3
+
+$ sudo chmod 770 project/mobapp/
+$ su user1
+$ toch fromuser1.txt
+$ su user2
+$ touch fromuser2.txt
+$ su user3
+$ toch fromuser3.txt
+$ sudo chown sedosona  project/mobapp/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+****************************************
+
+mkdir parent/child
+
+sudo useradd -m u1
+sudo useradd -m u2
+
+sudo passwd u1
+sudo passwd u2
+
+sudo groupadd group1
+
+sudo chgrp group1 parent/child
+
+chmod g+rwx parent/child
+
+sudo usermod -G group1 u1
+sudo usermod -G group1 u2
+
+***************************************
+
+
