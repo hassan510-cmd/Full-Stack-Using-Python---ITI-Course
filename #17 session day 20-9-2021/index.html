@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery</title>
+    <script src="jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    .colorbtn {
+        background-color: aqua;
+        border-radius: 10px;
+        border-width: 1px;
+        padding: 5pc;
+    }
+
+    .btn2 {
+        background-color: chartreuse;
+        padding: 5pc;
+    }
+
+    .myd {
+        background-color: blueviolet;
+        width: 10px;
+    }
+
+    .di2 {
+        background-color: blanchedalmond;
+        width: 10px;
+    }
+
+    .mybik {
+        width: 200px;
+        height: 150px;
+        position: relative;
+        transition: transform 0.2s ease;
+
+    }
+
+    .myslider {
+        background-color: blanchedalmond;
+        text-align: center;
+        box-shadow: 6px 6px 30px;
+        border-radius: 10px;
+        height: 430px;
+    }
+
+    #current_image {
+        width: 550px;
+        height: 400px;
+    }
+</style>
+
+<body>
+    <div id="slide" class="myslider">
+        <button id="left">
+            < </button>
+                <img id="current_image" src="b1.png" alt="">
+                <button id="right">
+                    > </button>
+    </div>
+    <h1 class="start">Start JQuery</h1>
+    <table>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+    </table>
+
+    <button id="btnT" class="colorbtn">test </button>
+    <div id="mydiv" class="myd">hiiiiiiiiiii</div>
+    <button id="stbtn">start animate</button>
+    <button id="opbtn">stop animat</button>
+    <div id="di2" class="di2">56+5656546 </div>
+    <img id="mybik" class="mybik" src="plan.png" alt="">
+
+
+</body>
+<script src="jq.js"></script>
+
+</html>
