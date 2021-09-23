@@ -21,37 +21,51 @@ $("#stbtn").click(function () {
 $("#opbtn").click(() => {
     $("#di2").stop(true, false)
 })
+
+
+
+
+
+
 let x = 0
 let y = 0
 let inc = 40
+let active = null
+for (let element of $("#mybik2,#mybik,#slide")) {
+    console.log(element);
+    $(element).click(function () {
+        let id = $(this).attr("id")
+        // console.log($(this).attr("id"));
+        active = `#${id}`
+        console.log(active);
+    })
+}
+
 $(document).keydown(function (e) {
-    if (e.code == "ArrowRight") {
-        // $("#mybik").animate({ left: "+=10px" }, 100)
-
-        $("#mybik").css("transform", `translate(${x += inc}px,${y}px)`)
-        console.log(x, $(window).width());
-        if ($("#mybik").css("left") >= `${$(window).width()}px`) {
-            console.log("assadsad");
+    if (active) {
+        var transformMatrix = $(active).css("transform")
+        var matrix = transformMatrix.replace(/[^0-9\-.,]/g, '').split(',');
+        var x = matrix[12] || matrix[4] || 0;//translate x
+        var y = matrix[13] || matrix[5] || 0;//translate y
+        console.log("top", x, "left", y);
+        x = Number(x)
+        y = Number(y)
+        if (e.code == "ArrowRight") {
+            $(active).css("transform", `translate(${x += inc}px,${y}px)`)
         }
-        console.log($("#mybik").css("left"));
+        else if (e.code == "ArrowLeft") {
+            $(active).css("transform", `translate(${x -= inc}px,${y}px)`)
+        }
+        else if (e.code == "ArrowUp") {
+            $(active).css("transform", `translate(${x}px,${y -= inc}px)`)
+        }
+        else if (e.code == "ArrowDown") {
+            $(active).css("transform", `translate(${x}px,${y += inc}px)`)
+        }
     }
-    else if (e.code == "ArrowLeft") {
-        // $("#mybik").css({ left: "-=incpx" })
-
-        $("#mybik").css("transform", `translate(${x -= inc}px,${y}px)`)
-    }
-    else if (e.code == "ArrowUp") {
-        // $("#mybik").css({ top: "-=incpx" })
-        $("#mybik").css("transform", `translate(${x}px,${y -= inc}px)`)
-    }
-    else if (e.code == "ArrowDown") {
-        $("#mybik").css("transform", `translate(${x}px,${y += inc}px)`)
-        // $("#mybik").css({ top: "+=10px" })
-    }
-
 });
 
-
+// --------------------------------------
 let my_pic = [1, 2, 3, 4, 5, 6]
 let index = 0
 console.log(my_pic.length);
@@ -73,10 +87,14 @@ $("#left").click(() => {
             })
             .fadeIn(400);
         // $("#current_image").css("transform", `translate(${-100}px,${0}px)`)
-        console.log(index);
+        // console.log(index);
     }
 
 })
+
+setInterval(() => {
+    $("#left").trigger("click");
+}, 2000);
 
 $("#right").click(() => {
     if ((index - 1) < 0) {
