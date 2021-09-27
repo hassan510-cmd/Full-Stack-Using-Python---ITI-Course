@@ -1,0 +1,83 @@
+☑ install postgres 
+
+☑ create database iti_python, connect on it
+      • createdb iti_python
+      • psql
+      • \c iti_python 
+      
+☑ create table students with columns (stud_id primary key auto increment not null,first_name, last_name (text), phone number number, bdate date, phon_number varchar,)
+      • create table students (stud_id serial primary key ,first_name text, last_name text, phone numeric , bdate date, phon_number varchar(20));
+
+☑ insert 10 records 3 has same first name, and rest with diff values
+      • insert into students(first_name,last_name,phone,bdate,phon_number) values
+	 ('hassan','mahmoud1',0123,'6/9/1999','0123'),
+	('hassan','mahmoud2',0524123,'6/9/1999','560123') ,				('hassan','mahmoud3',052400123,'6/9/1959','560126563') 
+      • insert into students(first_name,last_name,phone,bdate,phon_number) values ('ahmed','mahmoud2',0524123,'6/9/1999','560123') ,('ali','mahmoud3',052400123,'6/9/1959','560126563'),('saad','mahmoud1',0123,'6/9/1999','0123'),('ashraf','mahmoud1',0123,'6/9/1999','0123'),('mona','mahmoud1',0123,'6/9/1999','0123'),('dina','mahmoud1',0123,'6/9/1999','0123'),('noha','mahmoud1',0123,'6/9/1999','0123')
+      
+      
+☑ select fname, lname order by email
+      •   select first_name,last_name from students order by first_name ;
+      
+☑ rename table name to be iti
+      • ALTER TABLE studentsRENAME TO iti;
+
+☑ add column unique email
+      • alter table iti add column email varchar(50) unique;	
+
+☑ drop fname and lname and add full name column
+      • alter table iti drop column first_name , drop column last_name , add column full_name varchar(255);
+      
+☑ add constrain phone number is not null 
+      • alter table iti add unique (phon_number);
+      
+☑ update first column  with your full name
+      • insert into iti (full_name) values('hassan mahmoud hassan');
+      •  update  iti set full_name ='hassan mahmoud hassan' where stud_id =1;
+      
+☑ add column salary 
+      • alter table iti add column salary int;
+      
+☑ update record salary with 1000, 2000, 3000, 4000, 4000, 5000, 6000, 7000, 7000, 8000)
+      •  update iti set salary = res.salary from (values(1,1000),(2,2000),(3,3000),(4,4000),(5,5000),(6,6000),(7,7000),(8,8000),(9,9000),(10,10000),(11,11000)) as res(id,salary) where iti.stud_id=res.id;
+
+☑ get last 5 record
+      • select * from iti order by -stud_id limit 5 ;
+  
+☑ get record desc 
+      • select * from iti order by -stud_id limit 5 ;
+
+☑ get full-name, salary group by salary
+      • select full_name , salary from iti group by (full_name , salary)
+
+☑ get all salary greater than 5000
+      • select salary from iti where salary > 5000;
+      
+☑ get all unique data from table
+      • select distinct * from iti
+      
+☑ create schema test_schema 
+      • create schema test_schema;
+      
+☑ add iti_2 table under schema like iti 
+      • create table iti_2.iti (stud_id serial primary key ,first_name text, last_name text, phone numeric , bdate date, phon_number varchar(20));
+      
+☑ create temp table with one column first name
+      • create temporary table tem_t (f_name varchar(255));
+      
+☑ insert your name into this table
+      • insert into tem_t(f_name) values ('hassan mahmoud hassan');
+      
+☑ close postgres
+      • \q , exit
+      
+☑ open postgres select from your temp table and write what you notice
+      • relation "tem_t" does not exist
+      
+☑ describe  table  
+      • \d iti	
+      	
+☑ list tables
+      • \d
+      
+☑ list database
+      • \l
