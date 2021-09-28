@@ -1,0 +1,40 @@
+• create table company (id serial primary key , name varchar(20),age int ,address text , salary int);
+• insert into company (id,name,age,address,salary) values (1 , 'Paul' ,32 , 'California', 20000),(2 , 'Allen',  25, 'Texas', 15000),      (  3 , 'Teddy',  23 ,'Norway'    , 20000),( 4 ,'Mark', 25, 'Rich-Mond' , 65000),(  5 , 'David',  27 ,'Texas',85000),(6 , 'Kim',  22 , 'South-Hall',  45000),(  7 , 'James', 24, 'Houston',10000)
+• alter table company rename COLUMN id to EMP_ID ;
+•  select emp_id,name,dept from company inner join DEPARTMENT using(emp_id);
+•  emp_id | name  | dept                        
+--------+-------+----------------------------------------------------
+      1 | Paul  | IT Billing                                        
+      2 | Allen | Engineering                                       
+      7 | James | Finance    
+•  select emp_id,name,dept from company left join
+•  emp_id | name  |                        dept                        
+--------+-------+----------------------------------------------------
+      1 | Paul  | IT Billing                                        
+      2 | Allen | Engineering                                       
+      7 | James | Finance                                           
+      5 | David | 
+      6 | Kim   | 
+      4 | Mark  | 
+      3 | Teddy | 
+•  select emp_id,name,dept from company right join
+•  emp_id | name  |                        dept                        
+--------+-------+----------------------------------------------------
+      1 | Paul  | IT Billing                                        
+      2 | Allen | Engineering                                       
+      7 | James | Finance    
+• select emp_id,name,dept from company full outer join  DEPARTMENT using(emp_id);
+•  emp_id | name  |                        dept                        
+--------+-------+----------------------------------------------------
+      1 | Paul  | IT Billing                                        
+      2 | Allen | Engineering                                       
+      7 | James | Finance                                           
+      5 | David | 
+      6 | Kim   | 
+      4 | Mark  | 
+      3 | Teddy | 
+• create view comapny_dept as select emp_id,name,dept from company inner join  DEPARTMENT using(emp_id);
+• drop view comapny_dept ;
+• create index salary_index on company(salary) ;
+• drop index salary_index;
+• can't applu union query because each UNION query must have the same number of columns
