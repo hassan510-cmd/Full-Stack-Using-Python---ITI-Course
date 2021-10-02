@@ -1,0 +1,4 @@
+7:9:cheken:2:kg
+8:9:fish:2.5:kg
+9:10:nuts:2:kg
+10:10:rice:5:kg
