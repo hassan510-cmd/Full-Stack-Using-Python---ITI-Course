@@ -1,0 +1,140 @@
+do $$
+declare created_at time ;
+begin
+	raise notice 'asdastest % ' ,created_at;
+end $$;
+----------------------------------------------------------------
+do $$
+declare company_count integer ;
+begin
+	select  count(*) into  company_count from employees e ;
+	raise notice 'number of employees is %',company_count;
+end $$
+----------------------------------------------------------------
+do $$
+declare
+  email text := 'hassan@gmail.com';
+begin
+  raise exception 'duplicate email: %', email
+		using hint = 'check the email again';
+end $$;
+---------------------------------------------------------------
+do $$
+declare company_count integer ;
+begin
+	select  count(*) into  company_count from company c ;
+	assert company_count > 30 , 'company greater than 30';
+end $$
+---------------------------------------------------------------
+do $$
+begin
+	perform * from employees e where id = 0;
+	raise exception 'no id =0';
+end $$
+---------------------------------------------------------------
+do $$
+declare emp employees%rowtype;
+begin
+	select * into emp from employees e where id = 0;
+	if not found then
+		raise exception 'no id =0';
+	else
+		raise notice 'name is %' ,emp.first_name;
+	end if;
+end $$
+-----------------------------------------------------------------
+do $$
+declare com company%rowtype;
+begin
+	select * into com from company c  where salary = 85000;
+	if not found then
+		raise exception 'no salary = 85000';
+	else
+		raise notice 'name is %' ,com.name;
+	end if;
+end $$
+-----------------------------------------------------------------
+do $$
+declare 
+c record ;
+begin
+	for c in select *  from company c  limit 4
+	loop
+		raise notice '% %' , c.name , c.salary;
+	end loop ;
+end $$
+-----------------------------------------------------------------
+create function totalRecords()
+returns int
+language plpgsql
+as
+$$
+declare
+   total_count integer;
+begin
+   select count(*) 
+   into total_count
+   from company;
+   return total_count;
+end $$;
+select totalRecords();
+-----------------------------------------------------------------
+drop function totalrecords(); 
+select totalRecords();
+-----------------------------------------------------------------
+create or replace procedure increase_salary(
+	customer_id int,
+	amount dec 
+)
+language plpgsql    
+as
+$$
+begin
+	update company 
+	set salary =salary + amount 
+	where emp_id =customer_id;
+	commit;
+end; 
+$$
+
+call increase_salary (1,5000)
+-----------------------------------------------------------------
+drop procedure increase_salary ;
+-----------------------------------------------------------------
+CREATE TABLE employee_logs (
+   id  serial ,
+   employee_id INT NOT NULL,
+   f_name VARCHAR(40) NOT NULL,
+   changed_on TIMESTAMP(6) NOT NULL
+);
+-----------------------------------------------------------------
+create or replace function employees_log_changes()
+returns trigger 
+language plpgsql
+as 
+$$
+begin 
+	if new.first_name <> old.first_name then 
+		insert into employee_logs (employee_id,f_name,changed_on) values (old.id,old.first_name,now());
+	end if ;
+	return new;
+end;
+$$
+-----------------------------------------------------------------
+CREATE TRIGGER f_name_changes
+  BEFORE UPDATE
+  ON employees
+  FOR EACH ROW
+  EXECUTE PROCEDURE employees_log_changes();
+-----------------------------------------------------------------
+update employees set first_name = 'hassan' where id =1;
+-----------------------------------------------------------------
+alter trigger f_name_changes on employees rename to first_name_change;
+-----------------------------------------------------------------
+alter table employees disable trigger f_name_changes;
+alter table employees enable trigger all;
+
+
+
+
+
