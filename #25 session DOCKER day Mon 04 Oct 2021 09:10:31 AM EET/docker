@@ -1,0 +1,56 @@
+ 1937  sudo apt install docker.io
+ 1938  sudo docker container ls
+ 1939  sudo apt install docker.io
+ 1940  sudo apt --fix-broken  install docker.io
+ 1941  sudo apt purge docker.io
+ 1942  sudo apt purge docker
+ 1943  sudo apt --fix-broken  install docker.io
+ 1944  sudo apt-get remove  docker.io
+ 1945  sudo apt-get remove  docker
+ 1946  sudo apt-get remove  docker-engine
+ 1947  sudo apt remove  docker-engine
+ 1948  sudo apt purge  docker-engine
+ 1949  sudo apt-get remove docker docker-engine docker.io containerd runc
+ 1950  sudo apt install docker.io
+ 1951  sudo apt --fix-broken  install
+ 1952  service postgresql stop 
+ 1953  sudo apt --fix-broken  install
+ 1954  sudo docker containers
+ 1955  docker -help
+ 1956  docker
+ 1957  sudo apt-get update
+ 1958  sudo apt-get install docker-ce docker-ce-cli containerd.io
+ 1959  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+ 1960  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+ 1961  apt-cache madison docker-ce
+ 1962  sudo docker run hello-world
+ 1963  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+ 1964  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+ 1965  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+ 1966  apt update 
+ 1967  sudo apt update 
+ 1968  apt-cache policy docker-ce
+ 1969  apt install docker-ce
+ 1970  sudo apt install docker-ce
+ 1971  sudo apt install gcc g++
+ 1972  sudo docker run hello-world
+ 1973  docker container ls
+ 1974  sudo docker container ls
+ 1975  sudo docker pull odoo
+ 1976  sudo docker pull postgres:10
+ 1977           sudo docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name db postgres:10
+ 1978   sudo docker run -td -p 3000:3000 --name myodoo --link db:db -t --mount type=volume,source=myodofs,target=/var/lib/odoo/custom_add_on odoo
+ 1979  sudo docker run -td -p 3000:3000 --name myodoo --link db:db -t --mount type=volume,source=myodofs,target=/var/lib/odoo/custom_add_on odoo
+ 1980  sudo docker run -td -p 3000:8069 --name myodoo --link db:db -t --mount type=volume,source=myodofs,target=/var/lib/odoo/custom_add_on odoo
+ 1981  docker stop odoo
+ 1982  sudo  stop 
+ 1983  sudo docker container rm myodoo
+ 1984  docker stop myodoo
+ 1985  sudo docker stop myodoo
+ 1986  sudo docker container rm myodoo
+ 1987  sudo docker run -td -p 3000:8069 --name myodoo --link db:db -t --mount type=volume,source=myodofs,target=/var/lib/odoo/custom_add_on odoo
+ 1988  sudo docker stop myodoo
+ 1989  sudo docker container rm myodoo
+ 1990  docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name postgres_db postgres:10
+ 1991  sudo docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name postgres_db postgres:10
+ 1992  sudo docker run -p 8070:8069 --name odoo --link postgres_db:db -t odo
