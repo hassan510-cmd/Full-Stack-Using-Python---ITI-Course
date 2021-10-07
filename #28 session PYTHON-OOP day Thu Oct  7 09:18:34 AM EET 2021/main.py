@@ -1,22 +1,25 @@
 # 1
 def get_ranked_words():
     from sys import argv
-    file_name=argv[0]
+    file_name=argv[1]
     all_words=[]
     most_freq={}
-
-    with open(f'{file_name}','r') as data:
+    print(file_name)
+    with open(fr"lorem.txt",'r') as data:
         for line in data:
-            all_words=[word.lower().replace(".","") for word in line.split()]
+            for word in line.split():
+                all_words.append(word.lower().replace(".",""))
 
     for word in set(all_words):
         most_freq[word]=all_words.count(word)
 
     ranked_words=sorted(most_freq.items(),key=lambda x:x[1])
     output=open("popular_words.txt",'w')
-    for i in x[(len(x)-1):(len(x)-21):-1]:
+    for i in ranked_words[(len(ranked_words)-1):(len(ranked_words)-21):-1]:
         output.write(f"{i}\n")
+
     output.close()
+get_ranked_words()
 # ---------------------------------------------------
 class Vehicle:
     pass
@@ -39,7 +42,7 @@ def calc_point_distance(x1,y1,x2,y2):
     import math
     distance= math.sqrt(math.pow(x2-x1,2)+math.pow(y2-y1,2))
     print(distance)
-calc_point_distance(10,20,5,3)
+# calc_point_distance(10,20,5,3)
 # ---------------------------------------------------
 
 class upper:
@@ -50,9 +53,9 @@ class upper:
     def print_string(self):
         print(self.str.title())
 
-ob=upper()
-ob.get_string()
-ob.print_string()
+# ob=upper()
+# ob.get_string()
+# ob.print_string()
 # ---------------------------------------------------
 
 class Circle():
@@ -67,7 +70,7 @@ class Circle():
         perimeter=2*3.14*self.radius
         print(f"you circle perimeter = {perimeter}")
 
-c1=Circle(10)
-c1.calc_area()
-c1.calc_perimeter()
+# c1=Circle(10)
+# c1.calc_area()
+# c1.calc_perimeter()
 # ---------------------------------------------------
