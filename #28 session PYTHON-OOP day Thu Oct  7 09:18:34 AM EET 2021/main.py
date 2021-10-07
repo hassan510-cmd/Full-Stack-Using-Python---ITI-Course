@@ -35,14 +35,14 @@ statement="hello my name is hassan"
 reversed_statment=""
 for i in statement.split():
     reversed_statment+=i[::-1]+" "
+
+print('reversed_statment ',reversed_statment)
 # ---------------------------------------------------
-
-
 def calc_point_distance(x1,y1,x2,y2):
     import math
     distance= math.sqrt(math.pow(x2-x1,2)+math.pow(y2-y1,2))
-    print(distance)
-# calc_point_distance(10,20,5,3)
+    print(f'point_distance : {distance}')
+calc_point_distance(10,20,5,3)
 # ---------------------------------------------------
 
 class upper:
@@ -53,9 +53,9 @@ class upper:
     def print_string(self):
         print(self.str.title())
 
-# ob=upper()
-# ob.get_string()
-# ob.print_string()
+ob=upper()
+ob.get_string()
+ob.print_string()
 # ---------------------------------------------------
 
 class Circle():
@@ -70,7 +70,7 @@ class Circle():
         perimeter=2*3.14*self.radius
         print(f"you circle perimeter = {perimeter}")
 
-# c1=Circle(10)
-# c1.calc_area()
-# c1.calc_perimeter()
+c1=Circle(10)
+c1.calc_area()
+c1.calc_perimeter()
 # ---------------------------------------------------
