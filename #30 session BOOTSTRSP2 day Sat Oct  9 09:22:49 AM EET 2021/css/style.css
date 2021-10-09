@@ -1,0 +1,43 @@
+.acti{
+    display: flex;
+    align-items: center;
+}
+
+.person-data{
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputs{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: -webkit-fill-available;
+}
+
+.myimg{
+    /* width: 100px;
+    height: 100px; */
+    z-index: -1000;
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    /* left: 50%; */
+    /* margin-top: -50px;
+    margin-left: -50px; */
+}
+
+.neon{
+    box-shadow: 38px 16px 56px -5px rgba(0,255,90,0.38);
+    -webkit-box-shadow: 38px 16px 56px -5px rgba(0,255,90,0.38);
+    -moz-box-shadow: 38px 16px 56px -5px rgba(0,255,90,0.38);
+    width: inherit;
+    transform: scale(1.25);
+}
+
+
+.last2{
+    display: flex;
+}

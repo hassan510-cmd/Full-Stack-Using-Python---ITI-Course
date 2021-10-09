@@ -5,7 +5,7 @@ def get_ranked_words():
     all_words=[]
     most_freq={}
     print(file_name)
-    with open(fr"lorem.txt",'r') as data:
+    with open(fr"{file_name}",'r') as data:
         for line in data:
             for word in line.split():
                 all_words.append(word.lower().replace(".",""))
