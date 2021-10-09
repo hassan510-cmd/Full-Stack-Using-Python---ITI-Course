@@ -1,7 +1,6 @@
 class employee:
     all_emp=[]
     def __init__(self,fname,lname,age,department,salary):
-
         self.fname=fname
         self.lname=lname
         self.age=age

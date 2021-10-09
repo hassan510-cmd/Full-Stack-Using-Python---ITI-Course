@@ -17,7 +17,32 @@ class employee:
         con.insert('employees',self.id,self.fname,self.lname,self.age,self.department,self.salary)
         con.close_connection()
 
-    @classmethod
+    @staticmethod
+    def update_department(id,table_name,new_department):
+        for emp in employee.all_emp:
+            if emp.id == id:
+                emp.department=new_department
+            else:
+                continue
+        con=connection('postgres','iti_python','localhost','691999',5432)
+        con.open_connection()
+        con.update(table_name,f"department='{new_department}'",f'id={id}')
+        con.close_connection()
+
+    @staticmethod
+    def remove(table_name,id):
+
+        for emp in employee.all_emp:
+            if emp.id==id:
+                employee.all_emp.remove(emp)
+            else:
+                continue
+        con=connection('postgres','iti_python','localhost','691999',5432)
+        con.open_connection()
+        con.delete(table_name,f'id={id}')
+        con.close_connection()
+
+    @staticmethod
     def get_all_employees():
         for emn in employee.all_emp:
             print(f"name:{emn.fname} {emn.lname}\nage:{emn.age}"
