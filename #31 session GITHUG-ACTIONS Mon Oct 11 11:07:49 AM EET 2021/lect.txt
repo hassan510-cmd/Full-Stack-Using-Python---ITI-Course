@@ -1,0 +1,80 @@
+1-Development:
+	1-Developer (Dev environment):
+			IDEs, Compilers, Debuggers, Framework..
+			Dev uses his/her own PC, or uses a dedicated server called Development server.
+			Develope, Build
+	2-Testing:
+			Data set, testing scripts for automating tests (load test), workflow.
+			PCs, Dedicated server (Staging server)
+	3-Upload/Update production (deployment):
+			Server (The same environemt as Staging server) (Full dataset).
+2-Blue-Green model.
+	Blue: Staging server
+	Green: Production server
+	All normal traffic -> Green.
+	Data testers, some users -> Blue
+	If Test phase is ok: PASSED.
+		Reroute all normal traffic to blue, and convert blue to green
+		old green converted to be blue 	(Role back,patches, updates).
+3-Scenario:
+	1-	
+		Shell script takes two arguments (a,b). Prints out their sum.
+		uses github to automate testing, and delivery.
+	2-
+		CGI script using python takes two argument (get method), and prints out thier sum on html page.
+		uses github to auotmate, merge, docker image generation, publish the image into docker hub repo.
+----------------------------------------
+1-Testing scenario
+	1-Steps
+	1-Shell Script:
+		1-Accepts two parameters
+		2-Add them
+		3-Print output 
+	2-On push:
+		1-Testing
+		2-OK: pull-request
+		3-Faild: Exit
+	3-To perform a test, we have to have a data set.
+	2-Scenario
+		1-Shell script operation will be -
+			add,commit, and push "Look for github action"
+		2-Shell script operation will be +
+			add,commit, and push "Look for github action"
+		1-Uses an application called: skx/github-action-tester@master
+			Run shell script every time an event occured
+		1-Event : push
+		2-Run script : .github/run-tests.sh
+			1-dataset: All data set used in testing phase
+			2-run-test.sh : run sum.sh after push, and compare its result with daraset
+			3-Upload yml file to run actions on push event
+		
+------------------------------------------------------------------------
+2-Scenario 2:
+	hello.py : CGI script.
+	1-push, merge -> generate docker image -> base image "httpd". -> upload newmage to docker hub
+	2-
+		1-Actions:
+		2-Required files	(Dockerfile, httpd.conf)
+		3-Private repo on hub.docker.com (username,password, and registry)
+		4-Repo: compilereg/pythoncgi
+		5-USername: compilereg
+		6-Password: *********
+		7-Registry: docker.io
+		8-dockerfile: Dockerfile
+		**Note: username, and password are senstive data, can not be written in your action yml file.
+		Instead of hard coding your username/password, just use secrets.
+		To create secrets i github:
+			1-From your repo, press settings
+			2-Go secrets from the left pane
+			3-Press New repository secret
+			4-In Name: write your desired variable name
+			5-In Value: Write your value
+		9-Upload:
+			1-yml file
+			2-Dockerfile	(How to generate docker image)
+			3-httpd.conf	(Apache2 configuration file contains CGI enabled moudle)
+
+Test shell scrit: https://github.com/compilereg/sum2
+CGI: https://github.com/compilereg/cgi2
+	
+	

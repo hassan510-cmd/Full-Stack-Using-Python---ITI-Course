@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>db</title>
+
+</head>
+<script>
+    console.log("asdasdsa")
+    var db = openDatabase('onlinestore', '1.0', 'web sql', 1024 * 1024 * 1024);
+    function dlete_table(){
+        db.transaction((query) => {
+            query.executeSql('drop table items ;')
+        });
+
+    }
+   
+    function create_table() {
+        db.transaction((query) => {
+            query.executeSql('CREATE TABLE IF NOT EXISTS items (id unique, name txt , amount int)');
+        });
+    }
+
+    function aaa() {
+        alert("asdsad")
+    }
+
+    function insert() {
+        var person = [
+            {
+                id: 40,
+                name: 'asdsad',
+                amout: 3
+            },
+            {
+                id: 50,
+                name: 'asdsa',
+                amout: 5
+            },
+            {
+                id: 60,
+                name: 'asdsa',
+                amout: 5
+            }
+
+        ]
+
+        db.transaction((query) => {
+            for (per of person) {
+                var { id, name, amout } = per
+                console.log(id, name, amout)
+                query.executeSql(`insert into items (id, name , amount) values(${id},'${name}',${amout});`);
+    
+            }
+        });
+    }
+</script>
+
+<body>
+    <button onclick="create_table()">create</button>
+    <button onclick="insert()">insert</button>
+    <button onclick="dlete_table()">delete</button>
+</body>
+
+</html>
